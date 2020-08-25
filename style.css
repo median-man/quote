@@ -1,0 +1,50 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 16px;
+  font-family: "Roboto Condensed", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  color: #FFF4F8;
+  background-image: linear-gradient(
+    to right top,
+    #91610f,
+    #935115,
+    #91411d,
+    #8d3225,
+    #86232d,
+    #8b2e29,
+    #8e3825,
+    #914322,
+    #916a1c,
+    #829035,
+    #62b26a,
+    #00d2b1
+  );
+}
+
+.blockquote {
+  max-width: 30rem;
+  padding: 2rem;
+}
+
+.blockquote__body {
+  font-size: 2em;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.blockquote__byline {
+  font-size: 1.5em;
+  text-align: right;
+  font-style: italic;
+  padding-top: 1em;
+  padding-right: 15%;
+}
