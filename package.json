@@ -5,6 +5,8 @@
   "main": "quotes.js",
   "dependencies": {
     "gatsby": "^2.24.52",
+    "gatsby-plugin-manifest": "^2.4.26",
+    "gatsby-plugin-offline": "^3.2.26",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "typeface-roboto-condensed": "0.0.75"
