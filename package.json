@@ -8,8 +8,13 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
+  },
   "scripts": {
+    "build": "gatsby build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d public",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,5 +27,5 @@
   "bugs": {
     "url": "https://github.com/median-man/quote/issues"
   },
-  "homepage": "https://github.com/median-man/quote#readme"
+  "homepage": "https://github.com/median-man/quote"
 }
