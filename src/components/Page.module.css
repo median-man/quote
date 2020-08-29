@@ -5,19 +5,4 @@
   height: 100vh;
   width: 100vw;
   color: #fff4f8;
-  background-image: linear-gradient(
-    to right top,
-    #91610f,
-    #935115,
-    #91411d,
-    #8d3225,
-    #86232d,
-    #8b2e29,
-    #8e3825,
-    #914322,
-    #916a1c,
-    #829035,
-    #62b26a,
-    #00d2b1
-  );
 }
