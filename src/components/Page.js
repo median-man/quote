@@ -14,7 +14,7 @@ export default function Page({ bgColors, children }) {
       }}
       className={styles.page}
     >
-      {children}
+      <div className={styles.page__content}>{children}</div>
     </div>
   );
 }
