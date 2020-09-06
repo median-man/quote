@@ -1,4 +1,10 @@
 import React from "react";
+import { Link } from "gatsby";
+import {
+  Fieldset,
+  FieldsetLegend,
+  FieldsetButtonGroup,
+} from "../components/Fieldset";
 import styles from "./control-panel.module.css";
 import {
   ColorControl,
@@ -38,28 +44,33 @@ export default function ControlPanel() {
   };
 
   return (
-    <fieldset className={styles.Fieldset}>
-      <legend className={styles.Fieldset__Legend}>Background Colors</legend>
-      <div className={styles.Fieldset__ButtonGroup}>
-        <button onClick={addColor}>Add Color</button>
-        <button aria-label="clear all colors" onClick={removeAllColors}>
-          Clear All
-        </button>
-      </div>
-      <div className={styles.ColorBar}>
-        {bgColors.map((color, index) => {
-          return (
-            <ColorControl key={color + index}>
-              <ColorControlInput
-                color={color}
-                index={index}
-                onChange={handleColorInputChange}
-              />
-              <ColorControlButton value={index} onClick={removeColor} />
-            </ColorControl>
-          );
-        })}
-      </div>
-    </fieldset>
+    <div>
+      <Link to="/" style={{ marginBottom: "1.5em", display: "block" }}>
+        Back to Quote
+      </Link>
+      <Fieldset>
+        <FieldsetLegend>Background Colors</FieldsetLegend>
+        <FieldsetButtonGroup>
+          <button onClick={addColor}>Add Color</button>
+          <button aria-label="clear all colors" onClick={removeAllColors}>
+            Clear All
+          </button>
+        </FieldsetButtonGroup>
+        <div className={styles.ColorBar}>
+          {bgColors.map((color, index) => {
+            return (
+              <ColorControl key={color + index}>
+                <ColorControlInput
+                  color={color}
+                  index={index}
+                  onChange={handleColorInputChange}
+                />
+                <ColorControlButton value={index} onClick={removeColor} />
+              </ColorControl>
+            );
+          })}
+        </div>
+      </Fieldset>
+    </div>
   );
 }

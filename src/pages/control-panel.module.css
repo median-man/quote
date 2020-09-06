@@ -1,17 +1,3 @@
-.Fieldset {
-  display: flex;
-  flex-direction: column;
-}
-
-.Fieldset__Legend {
-  padding-bottom: 1em;
-  font-size: 1.25em;
-}
-
-.Fieldset__ButtonGroup {
-  margin-bottom: 1.5em;
-}
-
 .ColorBar {
   display: flex;
   flex-wrap: wrap;
