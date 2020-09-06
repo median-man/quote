@@ -1,28 +1,26 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import Page from "../components/Page";
+import React from "react";
 import styles from "./control-panel.module.css";
-import defaultBgColors from "../defaultBgColors";
 import {
   ColorControl,
   ColorControlInput,
   ColorControlButton,
 } from "../components/ColorControl";
+import { useColorTheme } from "../colorThemeContext";
 
 export default function ControlPanel() {
-  const [colors, setColors] = useState(defaultBgColors);
+  const { bgColors, setBgColors } = useColorTheme();
 
   const removeColor = (e) => {
     const index = parseInt(e.target.value);
-    setColors((colors) =>
+    setBgColors((colors) =>
       colors.slice(0, index).concat(colors.slice(index + 1))
     );
   };
 
-  const removeAllColors = () => setColors(["#999999"]);
+  const removeAllColors = () => setBgColors(["#999999"]);
 
   const addColor = () => {
-    setColors((colors) => {
+    setBgColors((colors) => {
       const lastColor = colors[colors.length - 1];
       return [...colors, lastColor];
     });
@@ -32,7 +30,7 @@ export default function ControlPanel() {
     const { value } = e.target;
     const { index } = e.target.dataset;
 
-    setColors((colors) => {
+    setBgColors((colors) => {
       const newColors = [...colors];
       newColors[index] = value;
       return newColors;
@@ -40,30 +38,28 @@ export default function ControlPanel() {
   };
 
   return (
-    <Page bgColors={colors}>
-      <fieldset className={styles.Fieldset}>
-        <legend className={styles.Fieldset__Legend}>Background Colors</legend>
-        <div className={styles.Fieldset__ButtonGroup}>
-          <button onClick={addColor}>Add Color</button>
-          <button aria-label="clear all colors" onClick={removeAllColors}>
-            Clear All
-          </button>
-        </div>
-        <div className={styles.ColorBar}>
-          {colors.map((color, index) => {
-            return (
-              <ColorControl key={color + index}>
-                <ColorControlInput
-                  color={color}
-                  index={index}
-                  onChange={handleColorInputChange}
-                />
-                <ColorControlButton value={index} onClick={removeColor} />
-              </ColorControl>
-            );
-          })}
-        </div>
-      </fieldset>
-    </Page>
+    <fieldset className={styles.Fieldset}>
+      <legend className={styles.Fieldset__Legend}>Background Colors</legend>
+      <div className={styles.Fieldset__ButtonGroup}>
+        <button onClick={addColor}>Add Color</button>
+        <button aria-label="clear all colors" onClick={removeAllColors}>
+          Clear All
+        </button>
+      </div>
+      <div className={styles.ColorBar}>
+        {bgColors.map((color, index) => {
+          return (
+            <ColorControl key={color + index}>
+              <ColorControlInput
+                color={color}
+                index={index}
+                onChange={handleColorInputChange}
+              />
+              <ColorControlButton value={index} onClick={removeColor} />
+            </ColorControl>
+          );
+        })}
+      </div>
+    </fieldset>
   );
 }
