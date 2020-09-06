@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import Page from "../components/Page";
 import styles from "./control-panel.module.css";
 import defaultBgColors from "../defaultBgColors";
+import {
+  ColorControl,
+  ColorControlInput,
+  ColorControlButton,
+} from "../components/ColorControl";
 
 export default function ControlPanel() {
   const [colors, setColors] = useState(defaultBgColors);
@@ -41,23 +46,14 @@ export default function ControlPanel() {
         <div className={styles.ColorBar}>
           {colors.map((color, index) => {
             return (
-              <div className={styles.ColorControl} key={color + index}>
-                <input
-                  className={styles.ColorControl__Input}
-                  type="color"
-                  defaultValue={color}
-                  data-index={index}
+              <ColorControl key={color + index}>
+                <ColorControlInput
+                  color={color}
+                  index={index}
                   onChange={handleColorInputChange}
                 />
-                <button
-                  aria-label="remove color"
-                  value={index}
-                  onClick={removeColor}
-                  className={styles.ColorControl__Button}
-                >
-                  &times;
-                </button>
-              </div>
+                <ColorControlButton value={index} onClick={removeColor} />
+              </ColorControl>
             );
           })}
         </div>

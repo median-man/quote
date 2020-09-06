@@ -1,0 +1,17 @@
+.ColorControl {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  height: 5em;
+  width: 4em;
+}
+
+.ColorControl__Input {
+  height: 3em;
+  width: 100%;
+}
+
+.ColorControl__Button {
+  padding: 0 0.5em;
+  margin: 0;
+}

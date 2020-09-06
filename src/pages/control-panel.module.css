@@ -1,36 +1,18 @@
-.FieldSet {
+.Fieldset {
   display: flex;
   flex-direction: column;
 }
 
-.FieldSet__Legend {
+.Fieldset__Legend {
   padding-bottom: 1em;
   font-size: 1.25em;
 }
 
-.FieldSet__Button {
+.Fieldset__Button {
   margin-bottom: 1.5em;
 }
 
 .ColorBar {
   display: flex;
   flex-wrap: wrap;
-}
-
-.ColorControl {
-  display: flex;
-  flex-direction: column;
-  justify-items: center;
-  height: 5em;
-  width: 4em;
-}
-
-.ColorControl__Input {
-  height: 3em;
-  width: 100%;
-}
-
-.ColorControl__Button {
-  padding: 0 0.5em;
-  margin: 0;
 }
