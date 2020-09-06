@@ -1,4 +1,4 @@
-.page {
+.Page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,12 +8,12 @@
   padding: 2em;
 }
 
-.page_content {
+.Page__Content {
   max-width: 40em;
 }
 
 @media screen and (min-width: 48em) {
-  .page__content {
+  .Page__Content {
     width: 44em;
   }
 }
