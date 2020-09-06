@@ -14,5 +14,8 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 - Add background image in place of gradient
 - Adjust opacity of gradient
 - Change quote font properties
+- Make control panel prettier
+- Add about page
+- Add animated instructional call outs for using the app
 - Register for cloud storage of quotes and color palettes
 - Premium accounts can deploy quote to static page
