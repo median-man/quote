@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import Page from "../components/Page";
 import styles from "./control-panel.module.css";
 import defaultBgColors from "../defaultBgColors";
@@ -17,6 +18,8 @@ export default function ControlPanel() {
       colors.slice(0, index).concat(colors.slice(index + 1))
     );
   };
+
+  const removeAllColors = () => setColors(["#999999"]);
 
   const addColor = () => {
     setColors((colors) => {
@@ -40,9 +43,12 @@ export default function ControlPanel() {
     <Page bgColors={colors}>
       <fieldset className={styles.Fieldset}>
         <legend className={styles.Fieldset__Legend}>Background Colors</legend>
-        <button onClick={addColor} className={styles.Fieldset__Button}>
-          Add Color
-        </button>
+        <div className={styles.Fieldset__ButtonGroup}>
+          <button onClick={addColor}>Add Color</button>
+          <button aria-label="clear all colors" onClick={removeAllColors}>
+            Clear All
+          </button>
+        </div>
         <div className={styles.ColorBar}>
           {colors.map((color, index) => {
             return (
