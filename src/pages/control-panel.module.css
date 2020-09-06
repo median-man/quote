@@ -1,23 +1,23 @@
-.fieldset {
+.FieldSet {
   display: flex;
   flex-direction: column;
 }
 
-.fieldset__legend {
+.FieldSet__Legend {
   padding-bottom: 1em;
   font-size: 1.25em;
 }
 
-.fieldset__button {
+.FieldSet__Button {
   margin-bottom: 1.5em;
 }
 
-.colorBar {
+.ColorBar {
   display: flex;
   flex-wrap: wrap;
 }
 
-.color-control {
+.ColorControl {
   display: flex;
   flex-direction: column;
   justify-items: center;
@@ -25,12 +25,12 @@
   width: 4em;
 }
 
-.color-control__input {
+.ColorControl__Input {
   height: 3em;
   width: 100%;
 }
 
-.color-control__btn {
+.ColorControl__Button {
   padding: 0 0.5em;
   margin: 0;
 }

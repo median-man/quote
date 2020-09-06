@@ -33,17 +33,17 @@ export default function ControlPanel() {
 
   return (
     <Page bgColors={colors}>
-      <fieldset className={styles.fieldset}>
-        <legend className={styles.fieldset__legend}>Background Colors</legend>
-        <button onClick={addColor} className={styles.fieldset__button}>
+      <fieldset className={styles.Fieldset}>
+        <legend className={styles.Fieldset__Legend}>Background Colors</legend>
+        <button onClick={addColor} className={styles.Fieldset__Button}>
           Add Color
         </button>
-        <div className={styles.colorBar}>
+        <div className={styles.ColorBar}>
           {colors.map((color, index) => {
             return (
-              <div className={styles.colorControl} key={color + index}>
+              <div className={styles.ColorControl} key={color + index}>
                 <input
-                  className={styles.colorControl__input}
+                  className={styles.ColorControl__Input}
                   type="color"
                   defaultValue={color}
                   data-index={index}
@@ -53,7 +53,7 @@ export default function ControlPanel() {
                   aria-label="remove color"
                   value={index}
                   onClick={removeColor}
-                  className={styles.colorControl__btn}
+                  className={styles.ColorControl__Button}
                 >
                   &times;
                 </button>
