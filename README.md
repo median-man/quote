@@ -1,3 +1,18 @@
 # Quotes
 
 Idea: Create an app for taking a quote (and person who said it) to create an artful page and deploy it with ease.
+
+## Feature Ideas
+
+- Add control panel to manage quotes and colors.
+- Persist state locally.
+- Add keyboard shortcut to go to control panel.
+- Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.
+- Navigate between quotes using keyboard arrows.
+- Save "preset" color pallets
+- Suggest color pallets
+- Add background image in place of gradient
+- Adjust opacity of gradient
+- Change quote font properties
+- Register for cloud storage of quotes and color palettes
+- Premium accounts can deploy quote to static page
