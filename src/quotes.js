@@ -19,6 +19,10 @@ const quotes = [
 
 const defaultState = { quotes, currentIndex: 1, version: QUOTES_VERSION };
 const initialState = () => {
+  // gatsby doesn't have a window when rendering production build
+  if (!window || !window.localStorage) {
+    return defaultState;
+  }
   let storedState = localStorage.getItem("quotes-state");
   console.log("storedState", storedState);
   if (storedState) {

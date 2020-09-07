@@ -85,6 +85,10 @@ export const initColors = () => {
 };
 
 export const bgColors = () => {
+  // window and document are undefined when gatsby renders for production build
+  if (typeof window === "undefined") {
+    return [];
+  }
   const { backgroundColor, backgroundImage } = document.body.style;
   if (backgroundColor) {
     return [rgbToHex(backgroundColor)];
