@@ -6,21 +6,21 @@ export function ColorControl({ children }) {
   return <div className={styles.ColorControl}>{children}</div>;
 }
 
-export function ColorControlInput({ color, index, onChange }) {
+export function ColorControlInput({ color, index, onInput }) {
   return (
     <input
       className={styles.ColorControl__Input}
       type="color"
-      value={color}
+      defaultValue={color}
       data-index={index}
-      onChange={onChange}
+      onInput={onInput}
     />
   );
 }
 ColorControlInput.propTypes = {
   color: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
-  onChange: PropTypes.func.isRequired,
+  onInput: PropTypes.func.isRequired,
 };
 
 export function ColorControlButton({ value, onClick }) {

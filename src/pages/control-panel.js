@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import {
   Fieldset,
@@ -11,36 +11,33 @@ import {
   ColorControlInput,
   ColorControlButton,
 } from "../components/ColorControl";
-import { useColorTheme } from "../colorThemeContext";
+import * as bgColorService from "../bgColorService";
 
 export default function ControlPanel() {
-  const { bgColors, setBgColors } = useColorTheme();
+  const [colors, setColors] = useState(bgColorService.bgColors());
+
+  const syncColors = () => setColors(bgColorService.bgColors());
 
   const removeColor = (e) => {
     const index = parseInt(e.target.value);
-    setBgColors((colors) =>
-      colors.slice(0, index).concat(colors.slice(index + 1))
-    );
+    bgColorService.removeColorAt(index);
+    syncColors();
   };
 
-  const removeAllColors = () => setBgColors(["#999999"]);
+  const removeAllColors = () => {
+    bgColorService.clear([]);
+    syncColors();
+  };
 
   const addColor = () => {
-    setBgColors((colors) => {
-      const lastColor = colors[colors.length - 1];
-      return [...colors, lastColor];
-    });
+    bgColorService.pushColor("#888888");
+    syncColors();
   };
 
   const handleColorInputChange = (e) => {
     const { value } = e.target;
     const { index } = e.target.dataset;
-
-    setBgColors((colors) => {
-      const newColors = [...colors];
-      newColors[index] = value;
-      return newColors;
-    });
+    bgColorService.setColorAt(index, value);
   };
 
   return (
@@ -57,13 +54,16 @@ export default function ControlPanel() {
           </button>
         </FieldsetButtonGroup>
         <div className={styles.ColorBar}>
-          {bgColors.map((color, index) => {
+          {colors.map((color, index) => {
+            // color input must be uncontrolled for color well to remain visible while user drags
+            // the picker around on the well canvas. otherwise, calling render each time state changes
+            // causes the picker to be removed from the dom when the input element is replaced.
             return (
               <ColorControl key={color + index}>
                 <ColorControlInput
                   color={color}
                   index={index}
-                  onChange={handleColorInputChange}
+                  onInput={handleColorInputChange}
                 />
                 <ColorControlButton value={index} onClick={removeColor} />
               </ColorControl>
