@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Layout.module.css";
-import { initBgColors } from "../bgColorService";
+import { initBgColors } from "../colorService";
 
 export default function Layout({ children }) {
   initBgColors();

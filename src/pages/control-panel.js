@@ -11,33 +11,33 @@ import {
   ColorControlInput,
   ColorControlButton,
 } from "../components/ColorControl";
-import * as bgColorService from "../bgColorService";
+import * as colorService from "../colorService";
 
 export default function ControlPanel() {
-  const [colors, setColors] = useState(bgColorService.bgColors());
+  const [colors, setColors] = useState(colorService.bgColors());
 
-  const syncColors = () => setColors(bgColorService.bgColors());
+  const syncColors = () => setColors(colorService.bgColors());
 
   const removeColor = (e) => {
     const index = parseInt(e.target.value);
-    bgColorService.removeColorAt(index);
+    colorService.removeColorAt(index);
     syncColors();
   };
 
   const removeAllColors = () => {
-    bgColorService.clear([]);
+    colorService.clear([]);
     syncColors();
   };
 
   const addColor = () => {
-    bgColorService.pushColor("#888888");
+    colorService.pushColor("#888888");
     syncColors();
   };
 
   const handleColorInputChange = (e) => {
     const { value } = e.target;
     const { index } = e.target.dataset;
-    bgColorService.setColorAt(index, value);
+    colorService.setColorAt(index, value);
   };
 
   return (
