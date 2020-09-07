@@ -1,6 +1,6 @@
-import React, { createContext, useReducer } from "react";
-import { useState } from "react";
-import { useContext } from "react";
+import React, { createContext, useReducer, useContext, useEffect } from "react";
+
+const QUOTES_VERSION = "1";
 
 const quotes = [
   {
@@ -17,9 +17,24 @@ const quotes = [
   },
 ];
 
-const initialState = { quotes, currentIndex: 1 };
+const defaultState = { quotes, currentIndex: 1, version: QUOTES_VERSION };
+const initialState = () => {
+  let storedState = localStorage.getItem("quotes-state");
+  console.log("storedState", storedState);
+  if (storedState) {
+    storedState = JSON.parse(storedState);
+    if (storedState.version === QUOTES_VERSION) {
+      return storedState;
+    }
+  }
+  return defaultState;
+};
+const storeState = (state) => {
+  localStorage.setItem("quotes-state", JSON.stringify(state));
+};
 
 const ctx = createContext({
+  version: "",
   quotes: [],
   currentQuote: {},
   dispatch: () => {},
@@ -75,7 +90,10 @@ const reducer = (state, action) => {
 };
 
 export const QuotesProvider = (props) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState());
+  useEffect(() => {
+    storeState(state);
+  }, [state]);
   return (
     <ctx.Provider
       {...props}
