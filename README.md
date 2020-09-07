@@ -10,7 +10,7 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 
 - [x] Change font color
 - [x] Manage quotes
-- [ ] Persist state locally.
+- [x] Persist state locally.
 - [ ] Insert color
 - [x] Add keyboard shortcut to go to control panel.
 - [ ] Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.

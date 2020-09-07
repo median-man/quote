@@ -19,6 +19,21 @@ const DEFAULT_FONT_COLOR = "#fff4f8";
 let colors = [...defaultColors];
 let _fontColor = DEFAULT_FONT_COLOR;
 
+const loadColorsFromStorage = () => {
+  try {
+    return JSON.parse(localStorage.getItem("colors"));
+  } catch (error) {
+    return null;
+  }
+};
+
+const storeColors = () => {
+  localStorage.setItem(
+    "colors",
+    JSON.stringify({ colors, fontColor: _fontColor })
+  );
+};
+
 function rgbToHex(rgbString) {
   return (
     "#" +
@@ -61,6 +76,11 @@ const renderColors = () => {
 };
 
 export const initColors = () => {
+  const storedColors = loadColorsFromStorage();
+  if (storedColors) {
+    colors = storedColors.colors;
+    _fontColor = storeColors.fontColor;
+  }
   renderColors();
 };
 
@@ -80,26 +100,31 @@ export const bgColors = () => {
 export const setColorAt = (index, color) => {
   colors[index] = color;
   renderColors();
+  storeColors();
 };
 
 export const removeColorAt = (index) => {
   colors.splice(index, 1);
   renderColors();
+  storeColors();
 };
 
 export const pushColor = (color) => {
   colors.push(color);
   renderColors();
+  storeColors();
 };
 
 export const clear = () => {
   colors = [RESET_COLOR];
   renderColors();
+  storeColors();
 };
 
 export const setFontColor = (colorHex) => {
   _fontColor = colorHex;
   renderColors();
+  storeColors();
 };
 
 export const fontColor = () => _fontColor;
