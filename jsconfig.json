@@ -1,0 +1,8 @@
+{
+  "exclude": ["public", "node_modules", ".cache"],
+  "lib": ["DOM", "ESNext"],
+  "compilerOptions": {
+    "target": "es2019",
+    "jsx": "react"
+  }
+}
