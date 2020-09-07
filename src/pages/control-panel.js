@@ -40,17 +40,28 @@ export default function ControlPanel() {
     colorService.setColorAt(index, value);
   };
 
+  const handleFontColorChange = e => colorService.setFontColor(e.target.value);
+
   return (
     <div>
       <Link to="/" style={{ marginBottom: "1.5em", display: "block" }}>
         Back to Quote
       </Link>
       <Fieldset>
+        <FieldsetLegend>Font Settings</FieldsetLegend>
+        <label>
+          Font Color
+          <ColorControl>
+            <ColorControlInput color={colorService.fontColor()} onInput={handleFontColorChange} />
+          </ColorControl>
+        </label>
+      </Fieldset>
+      <Fieldset>
         <FieldsetLegend>Background Colors</FieldsetLegend>
         <FieldsetButtonGroup>
           <button onClick={addColor}>Add Color</button>
           <button aria-label="clear all colors" onClick={removeAllColors}>
-            Clear All
+            <span aria-hidden>Clear All</span>
           </button>
         </FieldsetButtonGroup>
         <div className={styles.ColorBar}>

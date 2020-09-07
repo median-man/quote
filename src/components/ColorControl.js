@@ -19,7 +19,7 @@ export function ColorControlInput({ color, index, onInput }) {
 }
 ColorControlInput.propTypes = {
   color: PropTypes.string.isRequired,
-  index: PropTypes.number.isRequired,
+  index: PropTypes.number,
   onInput: PropTypes.func.isRequired,
 };
 

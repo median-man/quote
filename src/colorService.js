@@ -14,8 +14,10 @@ const defaultColors = Object.freeze([
 ]);
 
 const RESET_COLOR = "#888888";
+const DEFAULT_FONT_COLOR = "#fff4f8";
 
 let colors = [...defaultColors];
+let _fontColor = DEFAULT_FONT_COLOR;
 
 function rgbToHex(rgbString) {
   return (
@@ -44,9 +46,10 @@ function rgbToHex(rgbString) {
   For this reason, a service for updating and reading the state of the
   background on the document.body element is used.
 */
-const renderBackground = () => {
+const renderColors = () => {
   document.body.style.backgroundImage = null;
   document.body.style.backgroundColor = null;
+  document.body.style.color = _fontColor;
   if (colors.length > 1) {
     const gradient = `linear-gradient(to right top, ${colors.join(",")})`;
     document.body.style.backgroundImage = gradient;
@@ -57,8 +60,8 @@ const renderBackground = () => {
   }
 };
 
-export const initBgColors = () => {
-  renderBackground();
+export const initColors = () => {
+  renderColors();
 };
 
 export const bgColors = () => {
@@ -76,20 +79,27 @@ export const bgColors = () => {
 
 export const setColorAt = (index, color) => {
   colors[index] = color;
-  renderBackground();
+  renderColors();
 };
 
 export const removeColorAt = (index) => {
   colors.splice(index, 1);
-  renderBackground();
+  renderColors();
 };
 
 export const pushColor = (color) => {
   colors.push(color);
-  renderBackground();
+  renderColors();
 };
 
 export const clear = () => {
   colors = [RESET_COLOR];
-  renderBackground();
+  renderColors();
 };
+
+export const setFontColor = (colorHex) => {
+  _fontColor = colorHex;
+  renderColors();
+};
+
+export const fontColor = () => _fontColor;

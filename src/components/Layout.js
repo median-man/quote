@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Layout.module.css";
-import { initBgColors } from "../colorService";
+import { initColors } from "../colorService";
 
 export default function Layout({ children }) {
-  initBgColors();
+  initColors();
   return (
     <div className={styles.Page}>
       <div className={styles.Page__Content}>{children}</div>
