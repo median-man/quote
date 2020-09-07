@@ -12,9 +12,12 @@ import {
   ColorControlButton,
 } from "../components/ColorControl";
 import * as colorService from "../colorService";
+import { useQuotes, PATCH_QUOTE, REMOVE_QUOTE, NEW_QUOTE } from "../quotes";
+import QuoteGroup from "../components/QuoteGroup";
 
 export default function ControlPanel() {
   const [colors, setColors] = useState(colorService.bgColors());
+  const { quotes, dispatch } = useQuotes();
 
   const syncColors = () => setColors(colorService.bgColors());
 
@@ -40,7 +43,23 @@ export default function ControlPanel() {
     colorService.setColorAt(index, value);
   };
 
-  const handleFontColorChange = e => colorService.setFontColor(e.target.value);
+  const handleFontColorChange = (e) =>
+    colorService.setFontColor(e.target.value);
+
+  const handleQuoteInputChange = (e) => {
+    const { name, value } = e.target;
+    const index = parseInt(e.target.getAttribute("data-index"));
+    console.log({ name, value, index });
+    dispatch({ type: PATCH_QUOTE, index, update: { [name]: value } });
+  };
+
+  const handleRemoveQuoteClick = (e) => {
+    const index = parseInt(e.currentTarget.value);
+    console.log({ index });
+    dispatch({ type: REMOVE_QUOTE, index });
+  };
+
+  const handleAddQuoteClick = () => dispatch({ type: NEW_QUOTE });
 
   return (
     <div>
@@ -52,7 +71,10 @@ export default function ControlPanel() {
         <label>
           Font Color
           <ColorControl>
-            <ColorControlInput color={colorService.fontColor()} onInput={handleFontColorChange} />
+            <ColorControlInput
+              color={colorService.fontColor()}
+              onInput={handleFontColorChange}
+            />
           </ColorControl>
         </label>
       </Fieldset>
@@ -82,6 +104,51 @@ export default function ControlPanel() {
           })}
         </div>
       </Fieldset>
+      <div>
+        <h2 style={{ fontSize: "1.8em" }}>Quotes</h2>
+        <div>
+          {quotes.map((quote, index) => {
+            return (
+              <QuoteGroup.Container key={index} label={`quote ${index + 1}`}>
+                <QuoteGroup.Heading>Quote #{index + 1}</QuoteGroup.Heading>
+                <QuoteGroup.RemoveButton
+                  index={index}
+                  onClick={handleRemoveQuoteClick}
+                />
+                <QuoteGroup.Input
+                  type="text"
+                  name="author"
+                  value={quote.author}
+                  onChange={handleQuoteInputChange}
+                  index={index}
+                  label="Author"
+                />
+                <QuoteGroup.Input
+                  type="url"
+                  name="cite"
+                  value={quote.cite}
+                  onChange={handleQuoteInputChange}
+                  index={index}
+                  label="Citation URL"
+                />
+                <QuoteGroup.Textarea
+                  name="quote"
+                  value={quote.quote}
+                  onChange={handleQuoteInputChange}
+                  index={index}
+                  label="Quote Text"
+                />
+              </QuoteGroup.Container>
+            );
+          })}
+          <button
+            onClick={handleAddQuoteClick}
+            className={styles.ControlPanel__AddQuoteButton}
+          >
+            Add Quote
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

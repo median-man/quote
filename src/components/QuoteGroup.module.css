@@ -1,0 +1,32 @@
+.QuoteGroup {
+  background-color: rgba(225, 225, 225, 0.3);
+  display: flex;
+  flex-direction: column;
+  margin: 1em 0;
+  padding: 1em;
+  position: relative;
+}
+
+.QuoteGroup__Heading {
+  font-size: 1.3em;
+  padding-bottom: 1em;
+}
+
+.QuoteGroup__RemoveButton {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.QuoteGroup__Label {
+  margin-bottom: 0.5em;
+}
+
+.QuoteGroup__Input {
+  width: 100%;
+}
+
+.QuoteGroup__Textarea {
+  width: 100%;
+  resize: none;
+}
