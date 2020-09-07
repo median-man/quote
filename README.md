@@ -4,7 +4,8 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 
 ## Feature Ideas
 
-- [ ] Add control panel to manage quotes and colors.
+- [ ] Change font color
+- [ ] Manage quotes
 - [ ] Persist state locally.
 - [x] Add keyboard shortcut to go to control panel.
 - [ ] Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.
