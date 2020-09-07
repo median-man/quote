@@ -2,10 +2,14 @@
 
 Idea: Create an app for taking a quote (and person who said it) to create an artful page and deploy it with ease.
 
+## Fixes
+
+- [ ] Fix div inside of label for Font Color control
+
 ## Feature Ideas
 
 - [x] Change font color
-- [ ] Manage quotes
+- [x] Manage quotes
 - [ ] Persist state locally.
 - [ ] Insert color
 - [x] Add keyboard shortcut to go to control panel.
