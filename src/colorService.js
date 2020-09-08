@@ -79,7 +79,7 @@ export const initColors = () => {
   const storedColors = loadColorsFromStorage();
   if (storedColors) {
     colors = storedColors.colors;
-    _fontColor = storeColors.fontColor;
+    _fontColor = storedColors.fontColor;
   }
   renderColors();
 };
