@@ -1,6 +1,12 @@
 .blockquote {
   max-width: 30rem;
+  margin: 0 auto;
   padding: 2rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .blockquote__body {

@@ -62,7 +62,7 @@ export default function ControlPanel() {
   const handleAddQuoteClick = () => dispatch({ type: NEW_QUOTE });
 
   return (
-    <div>
+    <div style={{ padding: "2em 0" }}>
       <Link to="/" style={{ marginBottom: "1.5em", display: "block" }}>
         Back to Quote
       </Link>
