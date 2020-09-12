@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext, useEffect } from "react";
 
-const QUOTES_VERSION = "1";
+const QUOTES_VERSION = "2";
 
 const quotes = [
   {
@@ -24,7 +24,6 @@ const initialState = () => {
     return defaultState;
   }
   let storedState = localStorage.getItem("quotes-state");
-  console.log("storedState", storedState);
   if (storedState) {
     storedState = JSON.parse(storedState);
     if (storedState.version === QUOTES_VERSION) {
@@ -40,12 +39,16 @@ const storeState = (state) => {
 const ctx = createContext({
   version: "",
   quotes: [],
+  currentIndex: 0,
   currentQuote: {},
   dispatch: () => {},
 });
 
+// ACTIONS
 export const NEW_QUOTE = "NEW_QUOTE";
+export const NEXT_QUOTE = "NEXT_QUOTE";
 export const PATCH_QUOTE = "PATCH_QUOTE";
+export const PREV_QUOTE = "PREV_QUOTE";
 export const REMOVE_QUOTE = "REMOVE_QUOTE";
 
 const patchQuote = (state, action) => {
@@ -59,6 +62,28 @@ const newQuote = (state) => {
   return {
     ...state,
     quotes: [...state.quotes, { author: "", cite: "", quote: "" }],
+  };
+};
+
+const nextQuote = (state) => {
+  let nextIndex = state.currentIndex + 1;
+  if (nextIndex >= state.quotes.length) {
+    nextIndex = 0;
+  }
+  return {
+    ...state,
+    currentIndex: nextIndex,
+  };
+};
+
+const prevQuote = (state) => {
+  let nextIndex = state.currentIndex - 1;
+  if (nextIndex < 0) {
+    nextIndex = state.quotes.length - 1;
+  }
+  return {
+    ...state,
+    currentIndex: nextIndex,
   };
 };
 
@@ -81,6 +106,12 @@ const reducer = (state, action) => {
   switch (action.type) {
     case NEW_QUOTE:
       return newQuote(state);
+
+    case NEXT_QUOTE:
+      return nextQuote(state);
+
+    case PREV_QUOTE:
+      return prevQuote(state);
 
     case PATCH_QUOTE:
       return patchQuote(state, action);

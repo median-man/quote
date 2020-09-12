@@ -10,7 +10,7 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 - [ ] Insert color
 - [x] Add keyboard shortcut to go to control panel.
 - [ ] Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.
-- [ ] Navigate between quotes using keyboard arrows.
+- [X] Navigate between quotes using keyboard arrows.
 - [ ] Save "preset" color pallets
 - [ ] Suggest color pallets
 - [ ] Add background image in place of gradient
