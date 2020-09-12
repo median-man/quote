@@ -1,0 +1,27 @@
+.QuoteNav {
+  color: inherit;
+  background: none;
+  display: flex;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  font-size: 5em;
+  width: 15%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+.QuoteNav:hover, .QuoteNav:focus {
+  opacity: 0.7;
+}
+
+.QuoteNav_direction_left {
+  left: 0;
+}
+
+.QuoteNav_direction_right {
+  right: 0;
+}

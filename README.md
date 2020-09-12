@@ -22,3 +22,4 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 - [ ] Register for cloud storage of quotes and color palettes
 - [ ] Premium accounts can deploy quote to static page
 - [ ] Display list of keyboard shortcuts when page first loads
+- [ ] Animate prev/next quote changes
