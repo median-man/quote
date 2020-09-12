@@ -9,7 +9,7 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 - [x] Persist state locally.
 - [ ] Insert color
 - [x] Add keyboard shortcut to go to control panel.
-- [ ] Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.
+- [ x Navigate between quotes using directional arrows when mouse is near left/right edge of viewport.
 - [X] Navigate between quotes using keyboard arrows.
 - [ ] Save "preset" color pallets
 - [ ] Suggest color pallets
@@ -23,3 +23,4 @@ Idea: Create an app for taking a quote (and person who said it) to create an art
 - [ ] Premium accounts can deploy quote to static page
 - [ ] Display list of keyboard shortcuts when page first loads
 - [ ] Animate prev/next quote changes
+- [ ] Progressive layout for control panel on wider screens
