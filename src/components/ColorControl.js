@@ -6,9 +6,10 @@ export function ColorControl({ children }) {
   return <div className={styles.ColorControl}>{children}</div>;
 }
 
-export function ColorControlInput({ color, index, onInput }) {
+export function ColorControlInput({ color, index, onInput, id }) {
   return (
     <input
+      id={id}
       className={styles.ColorControl__Input}
       type="color"
       defaultValue={color}
@@ -19,6 +20,7 @@ export function ColorControlInput({ color, index, onInput }) {
 }
 ColorControlInput.propTypes = {
   color: PropTypes.string.isRequired,
+  id: PropTypes.string,
   index: PropTypes.number,
   onInput: PropTypes.func.isRequired,
 };

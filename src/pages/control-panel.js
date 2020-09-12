@@ -68,15 +68,16 @@ export default function ControlPanel() {
       </Link>
       <Fieldset>
         <FieldsetLegend>Font Settings</FieldsetLegend>
-        <label>
-          Font Color
+        <div>
+          <label htmlFor="font-color-input">Font Color</label>
           <ColorControl>
             <ColorControlInput
+              id="font-color-input"
               color={colorService.fontColor()}
               onInput={handleFontColorChange}
             />
           </ColorControl>
-        </label>
+        </div>
       </Fieldset>
       <Fieldset>
         <FieldsetLegend>Background Colors</FieldsetLegend>
